@@ -9,8 +9,8 @@ print("1. Forward Selection\n2. Backward Elimination\nBertie's Special Algorithm
 algorithmChoice = int(input())
 print("\n")
 
-randomVal = str(round(random.uniform(0, 100), 1))
-print("Using no features and \"randon\" evalution, I get an accuracy of " + randomVal + "%\n")
+randomVal = str(round(random.uniform(50, 100), 1))
+print("Using no features and \"randon\" evaluation, I get an accuracy of " + randomVal + "%\n")
 
 if algorithmChoice == 1:
     print()
