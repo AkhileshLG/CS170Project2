@@ -7,3 +7,10 @@ print("1. Forward Selection\n2. Backward Elimination\nBertie's Special Algorithm
 algorithmChoice = int(input())
 print("\n")
 
+if algorithmChoice == 1:
+    print()
+elif algorithmChoice == 2:
+    print()
+elif algorithmChoice == 3:
+    print()
+
