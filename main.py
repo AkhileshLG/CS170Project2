@@ -1,6 +1,6 @@
 import random
 from forwardSelection import pathPrint
-
+from backwardselection import backwardSelection
 print("Welcome to Akhil, Sandeep, and Ethan's Feature Selection Algorithm.\n")
 numOfFeatures = str(input("Please enter total number of features: "))
 print("\n")
@@ -38,6 +38,6 @@ if algorithmChoice == 1:
         featureLst.remove(maxValue)
             
 elif algorithmChoice == 2:
-    print()
+    backwardSelection(numOfFeatures)
 elif algorithmChoice == 3:
     print()
