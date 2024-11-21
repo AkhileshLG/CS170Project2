@@ -6,7 +6,7 @@ numOfFeatures = str(input("Please enter total number of features: "))
 print("\n")
 
 print("Type the number of the algorithm you want to run.\n")
-print("1. Forward Selection\n2. Backward Elimination\nBertie's Special Algorithm\n")
+print("1. Forward Selection\n2. Backward Elimination\n3. Bertie's Special Algorithm\n")
 algorithmChoice = int(input())
 print("\n")
 
