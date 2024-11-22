@@ -1,6 +1,7 @@
 import random
-from forwardSelection import pathPrint
+from forwardSelection import forwardsSelection
 from backwardselection import backwardSelection
+
 print("Welcome to Akhil, Sandeep, and Ethan's Feature Selection Algorithm.\n")
 numOfFeatures = str(input("Please enter total number of features: "))
 print("\n")
@@ -24,19 +25,7 @@ for i in numOfFeatures:
     featureLstInput += 1
 
 if algorithmChoice == 1:
-    while len(featureLst) != 0:
-        for x in featureLst:
-            currentVal = str(x)
-            tempAccuracy = str(round(random.uniform(50, 100), 1))
-            print("Using feature(s) \{" + currentVal + "\} accuracy is " + tempAccuracy)
-
-            if maxAccuracy <= tempAccuracy:
-                maxAccuracy = tempAccuracy
-                maxValue = currentVal
-        
-        result.append(maxValue)
-        featureLst.remove(maxValue)
-            
+    forwardsSelection(numOfFeatures) 
 elif algorithmChoice == 2:
     backwardSelection(numOfFeatures)
 elif algorithmChoice == 3:

@@ -3,8 +3,8 @@ import itertools
 def backwardSelection(numOfFeatures):
     res = []
     numOfFeatures = int(numOfFeatures)
-    for i in range(1, numOfFeatures):
-        res.append(i)
+    for i in range(0, numOfFeatures):
+        res.append(i + 1)
     maxValueAndAccuracy = [res,round(random.uniform(50, 100), 1)]
 
     #printing for list with all values present
