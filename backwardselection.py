@@ -14,7 +14,7 @@ def backwardSelection(numOfFeatures):
     print("Feature set " + str(set(res)) + " was best, accuracy is " + str(maxValueAndAccuracy[1]) + "%" + "\n")
 
     #printing all possible combinations
-    for i in range(numOfFeatures-2,0, -1):
+    for i in range(numOfFeatures-1,0, -1):
         possibleCombinationsEachLevel = list(itertools.combinations(maxValueAndAccuracy[0], i))
         tmpMaxForLevel = -1
         tmpMaxList = []
