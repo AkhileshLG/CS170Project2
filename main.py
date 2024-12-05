@@ -14,16 +14,6 @@ print("\n")
 randomVal = str(round(random.uniform(50, 100), 1))
 print("Using no features and \"randon\" evaluation, I get an accuracy of " + randomVal + "%\n")
 
-maxAccuracy = str(0)
-featureLst = []
-result = []
-featureLstInput = 1
-maxValue = 1
-
-for i in numOfFeatures:
-    featureLst.append(featureLstInput)
-    featureLstInput += 1
-
 if algorithmChoice == 1:
     forwardsSelection(numOfFeatures) 
 elif algorithmChoice == 2:
