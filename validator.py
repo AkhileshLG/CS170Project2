@@ -16,14 +16,14 @@ class Validator:
             testLabel = labels[i]
             trainData = []
             trainLabels = []
-
             for j in range(len(data)):
                 if j != i:  
                     trainData.append([data[j][k] for k in featureSubset])
                     trainLabels.append(labels[j])
             trainData = np.array(trainData)
             trainLabels = np.array(trainLabels)
-            predictedLabel = self.classifier.train(trainData, trainLabels)
+            self.classifier.train(trainData, trainLabels)
+            predictedLabel = self.classifier.test(testInstance)
 
             if(predictedLabel == testLabel):
                 correctPredictions+=1
