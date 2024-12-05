@@ -1,7 +1,7 @@
 from NNclassifier import NNClassifier
 import numpy as np
 class Validator:
-    def __init__(self,classifier);
+    def __init__(self,classifier):
         self.classifier = classifier
     #passing in feature data, correct label, and feature subsets
     def evaluate(self, data, labels, featureSubset):
