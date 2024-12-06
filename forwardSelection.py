@@ -4,7 +4,9 @@ from loaddata import load_dataset
 from NNclassifier import NNClassifier
 from validator import Validator
 
-def forwardsSelection(numOfFeatures):
+def forwardsSelection(datasetpath):
+    features, labels = load_dataset(datasetpath)
+    
     randomVal = str(round(random.uniform(50, 100), 1))
     print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
     
