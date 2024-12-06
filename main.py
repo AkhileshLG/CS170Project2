@@ -11,9 +11,6 @@ print("1. Forward Selection\n2. Backward Elimination\n3. Bertie's Special Algori
 algorithmChoice = int(input())
 print("\n")
 
-randomVal = str(round(random.uniform(50, 100), 1))
-print("Using no features and \"randon\" evaluation, I get an accuracy of " + randomVal + "%\n")
-
 if algorithmChoice == 1:
     forwardsSelection(numOfFeatures) 
 elif algorithmChoice == 2:

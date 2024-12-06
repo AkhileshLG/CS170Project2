@@ -1,6 +1,9 @@
 import random
 import itertools
 def backwardSelection(numOfFeatures):
+    randomVal = str(round(random.uniform(50, 100), 1))
+    print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
+    
     res = []
     numOfFeatures = int(numOfFeatures)
     for i in range(0, numOfFeatures):
