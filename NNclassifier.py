@@ -6,18 +6,17 @@ class NNClassifier:
     def train(self, data, labels):
         self.training_data = data
         self.training_labels = labels
-    
-    def euclidean(point1, point2):
-        return np.sqrt(np.sum((np.array(point1) - np.array(point2)) ** 2))
 
     def test(self, instance):
         nearest_index = 0
         min_distance = float('inf')
 
         for i, train_instance in enumerate(self.training_data):
-            distance = euclidean(instance, train_instance)
+            distance = self.euclidean(instance, train_instance)
             if distance < min_distance:
                 min_distance = distance
                 nearest_index = i
 
         return self.training_labels[nearest_index]
+    def euclidean(self, point1, point2):
+        return np.sqrt(np.sum((np.array(point1) - np.array(point2)) ** 2))
