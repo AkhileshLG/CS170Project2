@@ -13,13 +13,13 @@ class Validator:
             #i gets the index of the instance and feature subset give
             testInstance = []
             for j in featureSubset:
-                testInstance.append(data[i][j])
+                testInstance.append(data[i][j - 1])
             testLabel = labels[i]
             trainData = []
             trainLabels = []
             for j in range(len(data)):
                 if j != i:  
-                    trainData.append([data[j][k] for k in featureSubset])
+                    trainData.append([data[j][k - 1] for k in featureSubset])
                     trainLabels.append(labels[j])
             trainData = np.array(trainData)
             trainLabels = np.array(trainLabels)
@@ -33,9 +33,9 @@ class Validator:
 
             if(predictedLabel == testLabel):
                 correctPredictions+=1
-                print(stringCurrentInstance + " - Predicted Label: " + stringPredictedLabel + " - Test Label: " + stringTestLabel + " - Correct")
-            else:
-                print(stringCurrentInstance + " - Predicted Label: " + stringPredictedLabel + " - Test Label: " + stringTestLabel + " - Incorrect")
+            #     print(stringCurrentInstance + " - Predicted Label: " + stringPredictedLabel + " - Test Label: " + stringTestLabel + " - Correct")
+            # else:
+            #     print(stringCurrentInstance + " - Predicted Label: " + stringPredictedLabel + " - Test Label: " + stringTestLabel + " - Incorrect")
         
         accuracy = correctPredictions / numInstances
         return accuracy

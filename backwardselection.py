@@ -1,14 +1,20 @@
 import random
 import itertools
-def backwardSelection(numOfFeatures):
+from loaddata import load_dataset
+from NNclassifier import NNClassifier
+from validator import Validator
+def backwardSelection(datasetpath):
+    features, labels = load_dataset(datasetpath)
+    NN = NNClassifier()
+    callValidator = Validator(NN)
     randomVal = str(round(random.uniform(50, 100), 1))
     print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
     
     res = []
-    numOfFeatures = int(numOfFeatures)
-    for i in range(0, numOfFeatures):
+    # numOfFeatures = int(numOfFeatures)
+    for i in range(0, len(features[0])):
         res.append(i + 1)
-    maxValueAndAccuracy = [res,round(random.uniform(50, 100), 1)]
+    maxValueAndAccuracy = [res, callValidator.evaluate(features,labels, res)]
 
     #printing for list with all values present
     print("Beginning search.")
@@ -17,12 +23,13 @@ def backwardSelection(numOfFeatures):
     print("Feature set " + str(set(res)) + " was best, accuracy is " + str(maxValueAndAccuracy[1]) + "%" + "\n")
 
     #printing all possible combinations
-    for i in range(numOfFeatures-1,0, -1):
+    for i in range(len(features[0])-1,0, -1):
         possibleCombinationsEachLevel = list(itertools.combinations(maxValueAndAccuracy[0], i))
         tmpMaxForLevel = -1
         tmpMaxList = []
         for combination in possibleCombinationsEachLevel:
-            tmpAccuracy = round(random.uniform(50,100),1)
+            # tmpAccuracy = round(random.uniform(50,100),1)
+            tmpAccuracy = callValidator.evaluate(features, labels, combination)
             print("     Using feature(s) " + str(set(combination)) + " accuracy is " + str(tmpAccuracy) + "%")
             if tmpAccuracy > maxValueAndAccuracy[1]:
                 maxValueAndAccuracy = [combination, tmpAccuracy]

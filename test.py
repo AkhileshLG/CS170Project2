@@ -14,7 +14,7 @@ NN = NNClassifier()
 callValidator = Validator(NN)
 print("Testing Small dataset with features: [3,5,7]")
 print("Result should be .89")
-result = callValidator.evaluate(features, labels, [2,4,6])
+result = callValidator.evaluate(features, labels, [3,5,7])
 if result == .89:
     print("Test has passed with value: .89" )
 else:
@@ -23,7 +23,7 @@ print("\n")
 print("Testing Large data with features: [1,15,27]")
 print("Result should be .950")
 features,labels = run(large_dataset_path)
-result = callValidator.evaluate(features, labels, [0,14,26])
+result = callValidator.evaluate(features, labels, [1,15,27])
 if result == .95:
     print("Test has passed with value: .950")
 else:
