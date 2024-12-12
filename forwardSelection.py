@@ -40,10 +40,10 @@ def forwardsSelection(datasetpath):
             
             if maxAccuracy <= tempAccuracy:
                 maxAccuracy = tempAccuracy
-                maxValue = str(featureLst[j])
+                maxValue = featureLst[j]
                 maxIndex = j
 
-        resultLst.append(str(maxValue))
+        resultLst.append(maxValue)
         featureLst.pop(maxIndex)
 
         if overallMaxAccuracy <= maxAccuracy:
@@ -51,10 +51,10 @@ def forwardsSelection(datasetpath):
             overallMaxAccuracy = str(maxAccuracy)
 
         if len(featureLst) != 0:
-            print("\nFeature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+            print("\nFeature set {" + ','.join(str(resultLst)) + "} was best, accuracy is " + maxAccuracy + "%\n")
         elif len(featureLst) == 0:
             if overallMaxAccuracy <= maxAccuracy:
-                print("\nFeature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+                print("\nFeature set {" + ','.join(str(resultLst)) + "} was best, accuracy is " + maxAccuracy + "%\n")
             elif overallMaxAccuracy > maxAccuracy:
                 print("\nWarning, Accuracy has decreased!)")
-                print("Feature set {" + ','.join(bestLst) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
+                print("Feature set {" + ','.join(str(bestLst)) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
