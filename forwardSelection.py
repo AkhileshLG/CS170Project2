@@ -6,7 +6,9 @@ from validator import Validator
 
 def forwardsSelection(datasetpath):
     features, labels = load_dataset(datasetpath)
-    
+    NN = NNClassifier()
+    callValidator = Validator(NN)
+
     randomVal = str(round(random.uniform(50, 100), 1))
     print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
     
@@ -16,27 +18,29 @@ def forwardsSelection(datasetpath):
     featureLst = []
     resultLst = []
     bestLst = []
-    numOfFeatures = int(numOfFeatures)
+    numOfFeatures = len(features[0])
     
     for i in range(0, numOfFeatures):
         featureLst.append(i + 1)
     
     print("Beginning Search.\n")
-
+    resultLst.clear()
     for i in range(0, numOfFeatures):
         maxAccuracy = str(0)
-        for j in range(0, len(featureLst)):
+        for k in range(0, len(featureLst)):
+            tempLst = resultLst
+            tempLst.append(featureLst[k])
             if len(resultLst) == 0:
-                tempAccuracy = str(round(random.uniform(30, 60), 1))
-                print("     Using feature(s) {" + str(featureLst[j]) + "} arruracy is " + tempAccuracy + "%\n")
+                tempAccuracy = str(callValidator.evaluate(features, labels, tempLst))
+                print("     Using feature(s) {" + str(featureLst[k]) + "} arruracy is " + tempAccuracy + "%\n")
             elif len(resultLst) != 0:
-                tempAccuracy = str(round(random.uniform(60, 100), 1))
-                print("     Using feature(s) {" + ','.join(resultLst) + "," + str(featureLst[j]) + "} arruracy is " + tempAccuracy + "%\n")
-            
+                tempAccuracy = str(callValidator.evaluate(features, labels, tempLst))
+                print("     Using feature(s) {" + ','.join(str(tempLst)) + "} arruracy is " + tempAccuracy + "%\n")
+
             if maxAccuracy <= tempAccuracy:
                 maxAccuracy = tempAccuracy
-                maxValue = str(featureLst[j])
-                maxIndex = j
+                maxValue = featureLst[k]
+                maxIndex = k
 
         resultLst.append(maxValue)
         featureLst.pop(maxIndex)
@@ -44,12 +48,12 @@ def forwardsSelection(datasetpath):
         if overallMaxAccuracy <= maxAccuracy:
             bestLst = resultLst.copy()
             overallMaxAccuracy = str(maxAccuracy)
-
+        
         if len(featureLst) != 0:
-            print("Feature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+            print("Feature set {" + ','.join(str(resultLst)) + "} was best, accuracy is " + maxAccuracy + "%\n")
         elif len(featureLst) == 0:
             if overallMaxAccuracy <= maxAccuracy:
-                print("Feature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+                print("Feature set {" + ','.join(str(resultLst)) + "} was best, accuracy is " + maxAccuracy + "%\n")
             elif overallMaxAccuracy > maxAccuracy:
                 print("Warning, Accuracy has decreased!)")
-                print("Feature set {" + ','.join(bestLst) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
+                print("Feature set {" + ','.join(str(bestLst)) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
