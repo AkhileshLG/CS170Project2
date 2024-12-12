@@ -9,8 +9,8 @@ def forwardsSelection(datasetpath):
     NN = NNClassifier()
     callValidator = Validator(NN)
 
-    randomVal = str(round(random.uniform(50, 100), 1))
-    print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
+    # randomVal = str(round(random.uniform(50, 100), 1))
+    # print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
     
     overallMaxAccuracy = str(0)
     maxValue = str(0)
@@ -18,17 +18,18 @@ def forwardsSelection(datasetpath):
     featureLst = []
     resultLst = []
     bestLst = []
-    numOfFeatures = len(features[0])
+    # numOfFeatures = len(features[0])
     
-    for i in range(0, numOfFeatures):
+    for i in range(0, len(features[0])):
         featureLst.append(i + 1)
     
     print("Beginning Search.\n")
+    resultLst.clear()
 
-    for i in range(0, numOfFeatures):
+    for i in range(0, len(features[0])):
         maxAccuracy = str(0)
         for j in range(0, len(featureLst)):
-            tempLst = resultLst
+            tempLst = resultLst.copy()
             tempLst.append(featureLst[j])
             if len(resultLst) == 0:
                 tempAccuracy = str(callValidator.evaluate(features, labels, tempLst))
@@ -50,10 +51,10 @@ def forwardsSelection(datasetpath):
             overallMaxAccuracy = str(maxAccuracy)
 
         if len(featureLst) != 0:
-            print("Feature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+            print("\nFeature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
         elif len(featureLst) == 0:
             if overallMaxAccuracy <= maxAccuracy:
-                print("Feature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
+                print("\nFeature set {" + ','.join(resultLst) + "} was best, accuracy is " + maxAccuracy + "%\n")
             elif overallMaxAccuracy > maxAccuracy:
-                print("Warning, Accuracy has decreased!)")
+                print("\nWarning, Accuracy has decreased!)")
                 print("Feature set {" + ','.join(bestLst) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
