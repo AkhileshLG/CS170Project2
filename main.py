@@ -2,6 +2,14 @@ import random
 from forwardSelection import forwardsSelection
 from backwardselection import backwardSelection
 
+# Group: Akhilesh Genneri - agenn001
+# DatasetID: 211
+# Small Dataset Results:
+#  - Forward: Feature Subset - {3, 5}, Acc: 0.92
+# - Backward: Feature Subset - {2, 4, 5, 7, 10} Acc: 0.82
+# Large Dataset Results:
+#  - Forward: Feature Subset - {1, 27] Acc: .95
+
 print("Welcome to Akhil, Sandeep, and Ethan's Feature Selection Algorithm.\n")
 datasetpath = str(input("Type in the name of the file to test : "))
 print("\n")
