@@ -37,6 +37,6 @@ class Validator:
             # else:
             #     print(stringCurrentInstance + " - Predicted Label: " + stringPredictedLabel + " - Test Label: " + stringTestLabel + " - Incorrect")
         
-        accuracy = correctPredictions / numInstances
+        accuracy = (correctPredictions / numInstances) * 100
         return accuracy
 
