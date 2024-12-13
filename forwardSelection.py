@@ -53,10 +53,10 @@ def forwardsSelection(datasetpath):
             overallMaxAccuracy = str(maxAccuracy)
 
         if len(featureLst) != 0:
-            print("\nFeature set " + str(set(resultLst)) + " was best, accuracy is " + str(maxAccuracy) + "%\n")
+            print("\nFeature set " + str(set(resultLst)) + " was best, accuracy is " + str(maxAccuracy) + "\n")
         elif len(featureLst) == 0:
             if overallMaxAccuracy <= maxAccuracy:
-                print("\nFeature set {" + str(set(resultLst)) + "} was best, accuracy is " + str(maxAccuracy) + "%\n")
+                print("\nFeature set " + str(set(resultLst)) + " was best, accuracy is " + str(maxAccuracy) + "\n")
             elif overallMaxAccuracy > maxAccuracy:
                 print("\nWarning, Accuracy has decreased!)")
-                print("Feature set {" + str(set(bestLst)) + "} was best, accuracy is " + overallMaxAccuracy + "%\n")
+                print("Feature set " + str(set(bestLst)) + " was best, accuracy is " + overallMaxAccuracy + "\n")
