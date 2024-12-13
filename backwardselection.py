@@ -8,7 +8,7 @@ def backwardSelection(datasetpath):
     NN = NNClassifier()
     callValidator = Validator(NN)
     randomVal = str(round(random.uniform(50, 100), 1))
-    print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "%\n")
+    print("Using no features and \"random\" evaluation, I get an accuracy of " + randomVal + "\n")
     
     res = []
     # numOfFeatures = int(numOfFeatures)
@@ -19,8 +19,8 @@ def backwardSelection(datasetpath):
     #printing for list with all values present
     print("Beginning search.")
     print("\n")
-    print("     Using feature(s) " + str(set(res)) + " accuracy is " + str(maxValueAndAccuracy[1]) + "%" + "\n")
-    print("Feature set " + str(set(res)) + " was best, accuracy is " + str(maxValueAndAccuracy[1]) + "%" + "\n")
+    print("     Using feature(s) " + str(set(res)) + " accuracy is " + str(maxValueAndAccuracy[1]) + "\n")
+    print("Feature set " + str(set(res)) + " was best, accuracy is " + str(maxValueAndAccuracy[1]) + "\n")
 
     #printing all possible combinations
     for i in range(len(features[0])-1,0, -1):
@@ -30,16 +30,16 @@ def backwardSelection(datasetpath):
         for combination in possibleCombinationsEachLevel:
             # tmpAccuracy = round(random.uniform(50,100),1)
             tmpAccuracy = callValidator.evaluate(features, labels, combination)
-            print("     Using feature(s) " + str(set(combination)) + " accuracy is " + str(tmpAccuracy) + "%")
+            print("     Using feature(s) " + str(set(combination)) + " accuracy is " + str(tmpAccuracy))
             if tmpAccuracy > maxValueAndAccuracy[1]:
                 maxValueAndAccuracy = [combination, tmpAccuracy]
             if tmpAccuracy > tmpMaxForLevel:
                 tmpMaxForLevel = tmpAccuracy
                 tmpMaxList = combination
 
-        print("\nFeature set " + str(set(tmpMaxList)) + " was best, accuracy is " + str(tmpMaxForLevel) + "%\n")
+        print("\nFeature set " + str(set(tmpMaxList)) + " was best, accuracy is " + str(tmpMaxForLevel) + "\n")
         if(tmpMaxForLevel < maxValueAndAccuracy[1]):
             print("(Warning, Accuracy has decreased!)\n")
         
-    print("Finished search!! The best feature subset is " + str(set(maxValueAndAccuracy[0])) + ", which has an accuracy of " + str(maxValueAndAccuracy[1]) + "%" )
+    print("Finished search!! The best feature subset is " + str(set(maxValueAndAccuracy[0])) + ", which has an accuracy of " + str(maxValueAndAccuracy[1]))
 
