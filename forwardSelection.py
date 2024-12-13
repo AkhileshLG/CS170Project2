@@ -33,10 +33,10 @@ def forwardsSelection(datasetpath):
             tempLst.append(featureLst[j])
             if len(resultLst) == 0:
                 tempAccuracy = str(callValidator.evaluate(features, labels, tempLst))
-                print("     Using feature(s) " + str(set(tempLst)) + " arruracy is " + tempAccuracy + "%")
+                print("     Using feature(s) " + str(set(tempLst)) + " arruracy is " + tempAccuracy)
             elif len(resultLst) != 0:
                 tempAccuracy = str(callValidator.evaluate(features, labels, tempLst))
-                print("     Using feature(s) " + str(set(tempLst)) + " arruracy is " + tempAccuracy + "%")
+                print("     Using feature(s) " + str(set(tempLst)) + " arruracy is " + tempAccuracy)
 
             tempLst.clear()
 
