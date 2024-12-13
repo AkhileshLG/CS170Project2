@@ -10,7 +10,8 @@ from backwardselection import backwardSelection
 # Large Dataset Results:
 #  - Forward: Feature Subset - {1, 27} Acc: .95
 # Titanic Dataset Results:
-#  - Forward: Featuer Subset - {2} Acc: 0.78
+#  - Forward: Feature Subset - {2} Acc: 0.78
+#  - Backward: Feature Subset - {2} Acc: 0.78
 
 print("Welcome to Akhil, Sandeep, and Ethan's Feature Selection Algorithm.\n")
 datasetpath = str(input("Type in the name of the file to test : "))
